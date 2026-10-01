@@ -14,7 +14,7 @@ st.write("科学実験ラボFutur Production")
 
 st.title("来歴")
 st.write("古河市教育ICTフォーラム出席")
-st.write("ネイチャーキッズ特派員")
+st.write("第14回ネイチャーキッズ特派員")
 st.write("子ども国会茨城県代表")
 st.write("茨城県児童生徒科学研究作品展教育委員会教育長賞受賞")
 st.write("総和中学校宿泊学習実行委員長")
@@ -27,25 +27,7 @@ st.write("下妻第一高等学校修学旅行実行委員長")
 st.write("下妻第一高等学校生徒会副生徒会長")
 st.write("下妻第一高等学校第54回文化祭実行委員長")
 st.write("令和8年古河市二十歳のつどい実行委員長")
+st.write("総和中学校第62期生同窓会主催")
 st.write("Accel Link幹部")
-
-
-st.set_page_config(page_title="専門・専攻",page_icon="📚️")
-
-st.title("習得中")
-st.write("情報学")
-st.write("物理学")
-st.write("解析学")
-st.write("工学")
-
-st.title("学習中")
-st.write("法学")
-st.write("危険物科学")
-st.write("防災学")
-
-
-st.title("習得済み")
-st.write("毒性学")
-st.write("食品衛生学")
 
          
