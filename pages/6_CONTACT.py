@@ -5,6 +5,7 @@ st.set_page_config(page_title="お仕事のご連絡・相談等",page_icon="�
 
 
 st.write("お仕事のご連絡・ご相談はDMもしくは下記メールより")
+st.write("過去のイベント資料に関する問い合わせ等もこちらへお願いします。")
 
 email = "aoshanyangxiang96@gmail.com"
 subject = "お問い合わせ"
