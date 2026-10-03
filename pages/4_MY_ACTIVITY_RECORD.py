@@ -9,9 +9,9 @@ st.write("個人情報保護のため、人が写っている写真にはモザ�
 #関数定義------------
 def display_images_2col(image_list, caption="", width="100%"):
     """
-    ・画像が1枚の場合：全端末で画面中央に配置
-    ・画像が2枚以上の場合：スマホでも横2列で並べる
-    ・width: 220, 100 などの数値指定で確実にサイズ変更可能
+    ・1枚の時：画面中央に配置
+    ・2枚以上の時：スマホでも横2列で並べる
+    ・width: 220, 150 などの数値、または "180px", "80%" で確実にサイズ変更可能
     """
     
     current_file = Path(__file__).resolve()
@@ -30,58 +30,43 @@ def display_images_2col(image_list, caption="", width="100%"):
                 return cand
         return None
 
-    # --- width の解析 (数値なら px に変換) ---
+    # 画像ファイルをHTML埋め込み用（Base64）に変換する関数
+    def get_img_html(file_path, style_str=""):
+        try:
+            with open(file_path, "rb") as f:
+                encoded = base64.b64encode(f.read()).decode()
+            ext = file_path.suffix.lower().replace(".", "")
+            ext = "jpeg" if ext in ["jpg", "jpeg"] else ext
+            src = f"data:image/{ext};base64,{encoded}"
+            return f'<img src="{src}" style="{style_str}" />'
+        except Exception as e:
+            return f'<span style="color:red;">画像読み込みエラー</span>'
+
+    # --- width の指定（数値・文字列）を CSS 用の文字列に変換 ---
     if isinstance(width, (int, float)):
         css_w = f"{int(width)}px"
     else:
         css_w = width if (width.endswith("%") or width.endswith("px")) else f"{width}px"
 
-    # カラム全体の「強制100%幅」を打ち消し、指定した幅に固定するCSS
-    st.html(f"""
-        <style>
-        /* スマホ対応：横並びを強制 */
-        [data-testid="stHorizontalBlock"] {{
-            display: flex !important;
-            flex-direction: row !important;
-            flex-wrap: nowrap !important;
-            gap: 8px !important;
-            justify-content: center !important;
-            align-items: center !important;
-        }}
-        
-        /* 画像を保持する要素・カラムのサイズを制限 */
-        [data-testid="stHorizontalBlock"] > div {{
-            min-width: 0 !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-        }}
-        
-        /* st.image 内部の画像サイズ指定を上書き強制 */
-        [data-testid="stImage"] {{
-            width: {css_w} !important;
-            max-width: 100% !important;
-            margin: 0 auto !important;
-        }}
-        [data-testid="stImage"] > img {{
-            width: 100% !important;
-            height: auto !important;
-            object-fit: contain !important;
-        }}
-        </style>
-    """)
+    # 画像に適用する共通のスタイル（幅を固定し、親枠からはみ出さないように設定）
+    img_style = f"width: {css_w}; max-width: 100%; height: auto; object-fit: contain; border-radius: 4px;"
 
     # -------------------------------------------------------------
     # パターンA：画像が1枚だけの場合（中央寄せ表示）
     # -------------------------------------------------------------
     if len(image_list) == 1:
         found_path = find_image(image_list[0])
-        cols = st.columns([1, 2, 1])
-        with cols[1]:
-            if found_path:
-                st.image(str(found_path))
-            else:
-                st.error(f"画像なし: {Path(image_list[0]).name}")
+        if found_path:
+            img_tag = get_img_html(found_path, img_style)
+            # 全体を中央寄せするHTML
+            html_code = f"""
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 8px 0;">
+                {img_tag}
+            </div>
+            """
+            st.markdown(html_code, unsafe_allow_html=True)
+        else:
+            st.error(f"画像なし: {Path(image_list[0]).name}")
 
     # -------------------------------------------------------------
     # パターンB：画像が2枚以上の場合（スマホでも横2列を維持）
@@ -90,27 +75,41 @@ def display_images_2col(image_list, caption="", width="100%"):
         for i in range(0, len(image_list), 2):
             pair = image_list[i:i+2]
             
-            if len(pair) == 1:
-                cols = st.columns([1, 2, 1])
-                target_col = cols[1]
-            else:
-                cols = st.columns(2)
-                target_col = None
-
-            for idx, img_path in enumerate(pair):
-                found_path = find_image(img_path)
-                col_to_use = target_col if target_col else cols[idx]
+            # 2枚並べる行の描画
+            if len(pair) == 2:
+                img1_path = find_image(pair[0])
+                img2_path = find_image(pair[1])
                 
-                with col_to_use:
-                    if found_path:
-                        st.image(str(found_path))
-                    else:
-                        st.error(f"画像なし: {Path(img_path).name}")
+                tag1 = get_img_html(img1_path, img_style) if img1_path else f"画像なし: {Path(pair[0]).name}"
+                tag2 = get_img_html(img2_path, img_style) if img2_path else f"画像なし: {Path(pair[1]).name}"
+                
+                # 2列均等配置のHTML（スマホでも折り返さず2列を維持）
+                html_code = f"""
+                <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 12px; width: 100%; margin: 8px 0;">
+                    <div style="flex: 1; display: flex; justify-content: center; min-width: 0;">{tag1}</div>
+                    <div style="flex: 1; display: flex; justify-content: center; min-width: 0;">{tag2}</div>
+                </div>
+                """
+                st.markdown(html_code, unsafe_allow_html=True)
+                
+            # 端数（最後の1枚）になった場合は中央寄せ
+            else:
+                img_path = find_image(pair[0])
+                if img_path:
+                    tag = get_img_html(img_path, img_style)
+                    html_code = f"""
+                    <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 8px 0;">
+                        {tag}
+                    </div>
+                    """
+                    st.markdown(html_code, unsafe_allow_html=True)
+                else:
+                    st.error(f"画像なし: {Path(pair[0]).name}")
 
     # キャプション（共通）
     if caption:
         st.markdown(
-            f"<p style='text-align: center; color: gray; font-size: 0.85em; margin-top: 4px;'>"
+            f"<p style='text-align: center; color: gray; font-size: 0.85em; margin-top: 4px; margin-bottom: 12px;'>"
             f"{caption}"
             f"</p>",
             unsafe_allow_html=True
