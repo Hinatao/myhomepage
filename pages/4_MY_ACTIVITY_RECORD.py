@@ -180,7 +180,7 @@ st.space("medium")
 #自由研究---------------------------
 display_images_2col(
     image_list=[
-        "photo/自由研究/r1.jpg","photo/自由研究/r2.jpg"
+        "photo/自由研究/r1.jpg","photo/自由研究/r2.jpg","photo/自由研究/r3.jpg"
     ],
     caption="茨城県児童生徒科学研究作品展",
     width=300
@@ -192,7 +192,7 @@ st.space("medium")
 #ミクロネシア----------------------
 display_images_2col(
     image_list=[
-        "photo/ミクロネシア/m1.jpg","photo/ミクロネシア/m2.jpg","photo/ミクロネシア/m3.jpg"
+        "photo/ミクロネシア/m1.jpg","photo/ミクロネシア/m2.jpg","photo/ミクロネシア/m3.jpg","photo/ミクロネシア/m4.jpg","photo/ミクロネシア/m5.jpg","photo/ミクロネシア/m6.jpg","photo/ミクロネシア/m7.jpg","photo/ミクロネシア/m8.jpg"
     ],
     caption="ミクロネシア諸島自然体験交流事業",
     width=300
@@ -204,7 +204,7 @@ st.space("medium")
 #中国------------------------------
 display_images_2col(
     image_list=[
-        "photo/中国/c1.jpg","photo/中国/c2.jpg","photo/中国/c3.jpg"
+        "photo/中国/c1.jpg","photo/中国/c2.jpg","photo/中国/c3.jpg","photo/中国/c4.jpg","photo/中国/c5.jpg","photo/中国/c6.jpg","photo/中国/c7.jpg"
     ],
     caption="古河市国際友好交流都市交流会",
     width=300
@@ -216,7 +216,7 @@ st.space("medium")
 #2021PVチーム-----------------
 display_images_2col(
     image_list=[
-        "photo/2021PV/2021PV.jpg"
+        "photo/2021PV/2021PV.jpg","photo/2021PV/pv2.jpg","photo/2021PV/pv3.jpg"
     ],
     caption="2021年PVチーム",
     width=300
@@ -241,7 +241,7 @@ st.space("medium")
 #修学旅行----------------------
 display_images_2col(
     image_list=[
-        "photo/修学旅行/t1.jpg"
+        "photo/修学旅行/t1.jpg","photo/修学旅行/t2.jpg","photo/修学旅行/t3.jpg","photo/修学旅行/t4.jpg","photo/修学旅行/t5.jpg"
     ],
     caption="下妻第一高等学校修学旅行",
     width=300
@@ -253,7 +253,7 @@ st.space("medium")
 #文化祭----------------------
 display_images_2col(
     image_list=[
-        "photo/文化祭/f1.jpg","photo/文化祭/f2.jpg","photo/文化祭/f3.jpg"
+        "photo/文化祭/f1.jpg","photo/文化祭/f2.jpg","photo/文化祭/f3.jpg","photo/文化祭/f4.jpg","photo/文化祭/f5.jpg","photo/文化祭/f6.jpg","photo/文化祭/f7.jpg","photo/文化祭/f8.jpg","photo/文化祭/f9.jpg","photo/文化祭/f10.jpg","photo/文化祭/f11.jpg","photo/文化祭/f12.jpg"
     ],
     caption="第54回下妻第一高等学校文化祭",
     width=300
@@ -265,7 +265,7 @@ st.space("medium")
 #成人式------------------------
 display_images_2col(
     image_list=[
-        "photo/成人式/ac1.jpg","photo/成人式/ac2.jpg","photo/成人式/ac3.jpg"
+        "photo/成人式/ac1.jpg","photo/成人式/ac2.jpg","photo/成人式/ac3.jpg","photo/成人式/ac4.jpg",,"photo/成人式/ac5.jpg","photo/成人式/ac6.jpg"
     ],
     caption="令和8年古河市二十歳のつどい",
     width=300
@@ -277,7 +277,7 @@ st.space("medium")
 #ダンデライオン-----------------
 display_images_2col(
     image_list=[
-        "photo/ダンデライオン/d1.jpg"
+        "photo/ダンデライオン/R8姉妹都市交流/d1.jpg"
     ],
     caption="令和8年古河市二十歳のつどい",
     width=300
@@ -289,7 +289,7 @@ st.space("medium")
 #アクセルリンク--------------------
 display_images_2col(
     image_list=[
-        "photo/なせばなる秋祭り/f1.jpg"
+        "photo/なせばなる秋祭り/f1.jpg","photo/なせばなる秋祭り/f2.jpg","photo/なせばなる秋祭り/f3.jpg","photo/なせばなる秋祭り/f4.jpg","photo/なせばなる秋祭り/f5.jpg"
     ],
     caption="Accel Link米沢(なせばなる秋祭り)",
     width=300
