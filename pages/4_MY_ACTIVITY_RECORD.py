@@ -99,7 +99,7 @@ display_images_2col(
 #--------------------------------
 
 #新関数定義------------
-def display_images_2col(image_list, caption="", width=None):
+def display_images_2col(image_list, caption="", width="100%"):
     """
     ・画像が1枚の場合：全端末で画面中央に配置
     ・画像が2枚以上の場合：スマホでも横2列で並べる
@@ -199,7 +199,7 @@ display_images_2col(
         "photo/nature_kids.jpg"
     ],
     caption="ネイチャーキッズ特派員",
-    width=1000
+    width=220
 )
 #--------------------------------
 st.space("medium")
