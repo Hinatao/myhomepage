@@ -265,7 +265,7 @@ st.space("medium")
 #成人式------------------------
 display_images_2col(
     image_list=[
-        "photo/成人式/ac1.jpg","photo/成人式/ac2.jpg","photo/成人式/ac3.jpg","photo/成人式/ac4.jpg",,"photo/成人式/ac5.jpg","photo/成人式/ac6.jpg"
+        "photo/成人式/ac1.jpg","photo/成人式/ac2.jpg","photo/成人式/ac3.jpg","photo/成人式/ac4.jpg","photo/成人式/ac5.jpg","photo/成人式/ac6.jpg"
     ],
     caption="令和8年古河市二十歳のつどい",
     width=300
