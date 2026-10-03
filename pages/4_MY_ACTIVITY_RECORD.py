@@ -87,57 +87,74 @@ with caption_col:
     )
 #------------------------------------------------------
 
-
-#画像貼り付けの関数定義-------------------------------
-
-def display_images_grid_2col(image_list, caption="", img_max_width="200px"):
+#関数定義----------------------------------------------
+def display_images_2col(image_list, caption="", width=220):
     """
-    st.columns を使用して HTML を一切使わずに2列配置する安全な関数
+    ネット上・スマホ環境でも確実に画像を見つけ出し、横2枚ずつ配置する関数
     """
-    # 2枚ずつペアにして列を作る
+    # 実行中ファイルの位置からプロジェクトのルート（親フォルダ）まで探索
+    current_file = Path(__file__).resolve()
+    
+    # 画像ファイルを探す関数（相対パス・絶対パス・pages階層ズレを吸収）
+    def find_image(img_path_str):
+        p = Path(img_path_str)
+        if p.is_absolute() and p.exists():
+            return p
+        
+        # 探す候補パスのリスト
+        candidates = [
+            current_file.parent / p,               # 同一フォルダ
+            current_file.parent.parent / p,        # 1つ上の親フォルダ (pagesから見たルート)
+            current_file.parent.parent.parent / p  # さらに上の階層
+        ]
+        
+        for cand in candidates:
+            if cand.exists():
+                return cand
+        return None
+
+    # 2枚ずつペアにして表示
     for i in range(0, len(image_list), 2):
         pair = image_list[i:i+2]
         
-        # 1行を [余白, 画像1, 画像2, 余白] の4カラムに分割して中央寄せる
-        cols = st.columns([1, 2, 2, 1])
+        # 画面幅に合わせて綺麗に2列配置
+        cols = st.columns(2, gap="small")
         
         for idx, img_path in enumerate(pair):
-            with cols[idx + 1]:
-                if Path(img_path).exists():
-                    st.image(str(img_path), use_container_width=True)
+            found_path = find_image(img_path)
+            
+            with cols[idx]:
+                if found_path:
+                    st.image(str(found_path), width=width)
                 else:
                     st.error(f"画像なし: {Path(img_path).name}")
 
     # 一番最後に1つだけキャプションを表示
     if caption:
-        st.caption(f"<div style='text-align: center;'>{caption}</div>", unsafe_allow_html=True)
-        
-#------------------------------------------------------------
+        st.markdown(
+            f"<p style='text-align: center; color: gray; font-size: 0.85em; margin-top: -5px;'>"
+            f"{caption}"
+            f"</p>",
+            unsafe_allow_html=True
+        )
+#-----------------------------------------------
 
-#ネイチャーキッズ----------------------------------------
-
-BASE_DIR = Path("/home/hinata/myhomepage")
-
-images = [
-    BASE_DIR / "photo" / "nature_kids.jpg"
-]
-
-display_images_grid_2col(
-    image_list=images,
-    caption="ネイチャーキッズ特派員"
+#ネイチャーキッズ---------------
+display_images_2col(
+    image_list=[
+        "photo/nature_kids.jpg"
+    ],
+    caption="ネイチャーキッズ特派員",
+    width=220
 )
-#--------------------------------------------------
+#--------------------------------
 
-#アジア子ども会議---------------------------
-
-BASE_DIR = Path("/home/hinata/myhomepage")
-
-images = [
-    BASE_DIR / "photo" / "asia_conf.jpg",
-    BASE_DIR / "photo" / "asia_conf_1.jpg"
-]
-
-display_images_grid_2col(
-    image_list=images,
-    caption="ネイチャーキッズ特派員"
+#アジア子ども会議---------------
+display_images_2col(
+    image_list=[
+        "photo/asia_conf.jpg","photo/asia_conf_1.jpg"
+    ],
+    caption="アジアこども会議",
+    width=220
 )
+#--------------------------------
