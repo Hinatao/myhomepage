@@ -120,7 +120,7 @@ def display_images_2col(image_list, caption="", width="100%"):
 #ネイチャーキッズ---------------
 display_images_2col(
     image_list=[
-        "photo/nature_kids.jpg"
+        "photo/ネイチャーキッズ/nature_kids.jpg"
     ],
     caption="ネイチャーキッズ特派員",
     width=500
@@ -132,7 +132,7 @@ st.space("medium")
 #アジア子ども会議---------------
 display_images_2col(
     image_list=[
-        "photo/asia_conf.jpg","photo/asia_conf_1.jpg"
+        "photo/アジアこども会議/asia_conf.jpg","photoアジアこども会議/asia_conf_1.jpg"
     ],
     caption="アジアこども会議",
     width=300
@@ -144,7 +144,7 @@ st.space("medium")
 #子ども国会----------------------
 display_images_2col(
     image_list=[
-        "photo/kids_diet.jpg"
+        "photo/こども国会/kids_diet.jpg"
     ],
     caption="こども国会",
     width=300
@@ -156,7 +156,7 @@ st.space("medium")
 #English camp----------------------
 display_images_2col(
     image_list=[
-        "photo/english_camp.jpg"
+        "photo/EnglishCamp/english_camp.jpg"
     ],
     caption="Englisg Camp",
     width=300
@@ -165,10 +165,10 @@ display_images_2col(
 
 st.space("medium")
 
-#納口先生-------------------------
+#ナダレンジャー-------------------------
 display_images_2col(
     image_list=[
-        "photo/dr_nadarenjar.jpg","photo/earthquake_reserch.jpg"
+        "photo/ナダレンジャー/dr1.jpg","photo/ナダレンジャー/dr2.jpg"
     ],
     caption="納口先生の防災イベントの様子",
     width=300
@@ -180,7 +180,7 @@ st.space("medium")
 #自由研究---------------------------
 display_images_2col(
     image_list=[
-        "photo/independence_reserch_1.jpg","photo/independence_reserch.jpg","photo/independence_reserch_2.jpg"
+        "photo/自由研究/r1.jpg","photo/自由研究/r2.jpg"
     ],
     caption="茨城県児童生徒科学研究作品展",
     width=300
@@ -192,7 +192,7 @@ st.space("medium")
 #ミクロネシア----------------------
 display_images_2col(
     image_list=[
-        "photo/micronecia_1.jpg","photo/micronecia.jpg","photo/micronecia_2.jpg"
+        "photo/ミクロネシア/m1.jpg","photo/ミクロネシア/m2.jpg","photo/ミクロネシア/m3.jpg"
     ],
     caption="ミクロネシア諸島自然体験交流事業",
     width=300
@@ -204,7 +204,7 @@ st.space("medium")
 #中国------------------------------
 display_images_2col(
     image_list=[
-        "photo/chaina.jpg","photo/chaina_1.jpg","photo/chaina_2.jpg"
+        "photo/中国/c1.jpg","photo/中国/c2.jpg","photo//中国c3.jpg"
     ],
     caption="古河市国際友好交流都市交流会",
     width=300
@@ -216,7 +216,7 @@ st.space("medium")
 #2021PVチーム-----------------
 display_images_2col(
     image_list=[
-        "photo/2021PV.jpg"
+        "photo/2021PV/2021PV.jpg"
     ],
     caption="2021年PVチーム",
     width=300
@@ -229,7 +229,7 @@ st.space("medium")
 
 display_images_2col(
     image_list=[
-        "photo/2022PV.jpg"
+        "photo/2022PV/2022PV.jpg"
     ],
     caption="2022年PVチーム",
     width=300
@@ -241,9 +241,56 @@ st.space("medium")
 #修学旅行----------------------
 display_images_2col(
     image_list=[
-        "photo/school_trip.jpg"
+        "photo/修学旅行/t1.jpg"
     ],
     caption="下妻第一高等学校修学旅行",
     width=300
 )
 #-------------------------------
+
+st.space("medium")
+
+#文化祭----------------------
+display_images_2col(
+    image_list=[
+        "photo/文化祭/f1.jpg","photo/文化祭/f2.jpg","photo/文化祭/f3.jpg"
+    ],
+    caption="第54回下妻第一高等学校文化祭",
+    width=300
+)
+#-------------------------------
+
+st.space("medium")
+
+#成人式------------------------
+display_images_2col(
+    image_list=[
+        "photo/成人式/ac1.jpg","photo/成人式/ac2.jpg","photo/成人式/ac3.jpg"
+    ],
+    caption="令和8年古河市二十歳のつどい",
+    width=300
+)
+#--------------------------------
+
+st.space("medium")
+
+#ダンデライオン-----------------
+display_images_2col(
+    image_list=[
+        "photo/ダンデライオン/d1.jpg"
+    ],
+    caption="令和8年古河市二十歳のつどい",
+    width=300
+)
+#---------------------------------
+
+st.space("medium")
+
+#アクセルリンク--------------------
+display_images_2col(
+    image_list=[
+        "photo/なせばなる秋祭り/f1.jpg"
+    ],
+    caption="Accel Link米沢(なせばなる秋祭り)",
+    width=300
+)
