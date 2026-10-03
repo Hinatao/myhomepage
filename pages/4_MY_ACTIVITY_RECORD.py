@@ -9,10 +9,9 @@ st.write("個人情報保護のため、人が写っている写真にはモザ�
 #関数定義------------
 def display_images_2col(image_list, caption="", width="100%"):
     """
-    ・大量の画像でもメモリを消費しにくい軽量版
-    ・1枚の時：中央寄せ
-    ・2枚以上の時：スマホでも横2列
-    ・width: 220 などの数値指定でサイズ変更可能
+    ・1枚の時：画面中央に配置
+    ・2枚以上の時：スマホでも横2列で並べる
+    ・width: 220, 150 などの数値、または "180px", "80%" で確実にサイズ変更可能
     """
     
     current_file = Path(__file__).resolve()
@@ -31,85 +30,83 @@ def display_images_2col(image_list, caption="", width="100%"):
                 return cand
         return None
 
-    # --- width の解析 (数値なら px に変換) ---
+    # 画像ファイルをHTML埋め込み用（Base64）に変換する関数
+    def get_img_html(file_path, style_str=""):
+        try:
+            with open(file_path, "rb") as f:
+                encoded = base64.b64encode(f.read()).decode()
+            ext = file_path.suffix.lower().replace(".", "")
+            ext = "jpeg" if ext in ["jpg", "jpeg"] else ext
+            src = f"data:image/{ext};base64,{encoded}"
+            return f'<img src="{src}" style="{style_str}" />'
+        except Exception as e:
+            return f'<span style="color:red;">画像読み込みエラー</span>'
+
+    # --- width の指定（数値・文字列）を CSS 用の文字列に変換 ---
     if isinstance(width, (int, float)):
         css_w = f"{int(width)}px"
     else:
         css_w = width if (width.endswith("%") or width.endswith("px")) else f"{width}px"
 
-    # 軽量化のためCSSスタイルを一度だけ注入
-    st.markdown(f"""
-        <style>
-        /* 2列横並びを強制 */
-        .img-grid-container {{
-            display: flex !important;
-            flex-direction: row !important;
-            justify-content: center !important;
-            align-items: center !important;
-            gap: 10px !important;
-            width: 100% !important;
-        }}
-        .img-grid-item {{
-            flex: 1 !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            min-width: 0 !important;
-        }}
-        /* st.imageのサイズを上書き制御 */
-        .img-grid-item [data-testid="stImage"] {{
-            width: {css_w} !important;
-            max-width: 100% !important;
-        }}
-        .img-grid-item [data-testid="stImage"] img {{
-            width: 100% !important;
-            height: auto !important;
-            object-fit: contain !important;
-        }}
-        </style>
-    """, unsafe_allow_html=True)
+    # 画像に適用する共通のスタイル（幅を固定し、親枠からはみ出さないように設定）
+    img_style = f"width: {css_w}; max-width: 100%; height: auto; object-fit: contain; border-radius: 4px;"
 
-    # 画像の描画処理
+    # -------------------------------------------------------------
+    # パターンA：画像が1枚だけの場合（中央寄せ表示）
+    # -------------------------------------------------------------
     if len(image_list) == 1:
         found_path = find_image(image_list[0])
         if found_path:
-            st.markdown('<div class="img-grid-container"><div class="img-grid-item">', unsafe_allow_html=True)
-            st.image(str(found_path))
-            st.markdown('</div></div>', unsafe_allow_html=True)
+            img_tag = get_img_html(found_path, img_style)
+            # 全体を中央寄せするHTML
+            html_code = f"""
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 8px 0;">
+                {img_tag}
+            </div>
+            """
+            st.markdown(html_code, unsafe_allow_html=True)
         else:
             st.error(f"画像なし: {Path(image_list[0]).name}")
+
+    # -------------------------------------------------------------
+    # パターンB：画像が2枚以上の場合（スマホでも横2列を維持）
+    # -------------------------------------------------------------
     else:
         for i in range(0, len(image_list), 2):
             pair = image_list[i:i+2]
             
+            # 2枚並べる行の描画
             if len(pair) == 2:
-                img1 = find_image(pair[0])
-                img2 = find_image(pair[1])
+                img1_path = find_image(pair[0])
+                img2_path = find_image(pair[1])
                 
-                st.markdown('<div class="img-grid-container">', unsafe_allow_html=True)
+                tag1 = get_img_html(img1_path, img_style) if img1_path else f"画像なし: {Path(pair[0]).name}"
+                tag2 = get_img_html(img2_path, img_style) if img2_path else f"画像なし: {Path(pair[1]).name}"
                 
-                # 1枚目
-                st.markdown('<div class="img-grid-item">', unsafe_allow_html=True)
-                if img1: st.image(str(img1))
-                else: st.error(f"なし: {Path(pair[0]).name}")
-                st.markdown('</div>', unsafe_allow_html=True)
+                # 2列均等配置のHTML（スマホでも折り返さず2列を維持）
+                html_code = f"""
+                <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 12px; width: 100%; margin: 8px 0;">
+                    <div style="flex: 1; display: flex; justify-content: center; min-width: 0;">{tag1}</div>
+                    <div style="flex: 1; display: flex; justify-content: center; min-width: 0;">{tag2}</div>
+                </div>
+                """
+                st.markdown(html_code, unsafe_allow_html=True)
                 
-                # 2枚目
-                st.markdown('<div class="img-grid-item">', unsafe_allow_html=True)
-                if img2: st.image(str(img2))
-                else: st.error(f"なし: {Path(pair[1]).name}")
-                st.markdown('</div>', unsafe_allow_html=True)
-                
-                st.markdown('</div>', unsafe_allow_html=True)
+            # 端数（最後の1枚）になった場合は中央寄せ
             else:
-                # 奇数枚目のラスト1枚
-                img1 = find_image(pair[0])
-                st.markdown('<div class="img-grid-container"><div class="img-grid-item">', unsafe_allow_html=True)
-                if img1: st.image(str(img1))
-                else: st.error(f"なし: {Path(pair[0]).name}")
-                st.markdown('</div></div>', unsafe_allow_html=True)
+                img_path = find_image(pair[0])
+                if img_path:
+                    tag = get_img_html(img_path, img_style)
+                    html_code = f"""
+                    <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 8px 0;">
+                        {tag}
+                    </div>
+                    """
+                    st.markdown(html_code, unsafe_allow_html=True)
+                else:
+                    st.error(f"画像なし: {Path(pair[0]).name}")
 
-    # キャプション
+    # キャプション（共通）
     if caption:
         st.markdown(
             f"<p style='text-align: center; color: gray; font-size: 0.85em; margin-top: 4px; margin-bottom: 12px;'>"
