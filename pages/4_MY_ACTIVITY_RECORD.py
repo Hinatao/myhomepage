@@ -171,3 +171,64 @@ display_images_2col(
     width=220
 )
 #-----------------------------------
+
+st.space("medium")
+
+#ミクロネシア----------------------
+display_images_2col(
+    image_list=[
+        "photo/micronecis_1.jpg","photo/micronecia.jpg","photo/micronecia_2"
+    ],
+    caption="ミクロネシア諸島自然体験交流事業",
+    width=220
+)
+#-------------------------------------
+
+st.space("medium")
+
+#中国------------------------------
+display_images_2col(
+    image_list=[
+        "photo/chaina.jpg","photo/chaina_1.jpg","photo/chaina_2.jpg"
+    ],
+    caption="古河市国際友好交流都市交流会",
+    width=220
+)
+#---------------------------------
+
+st.space("medium")
+
+#2021PVチーム-----------------
+display_images_2col(
+    image_list=[
+        "photo/2021PV.jpg"
+    ],
+    caption="2021年PVチーム",
+    width=220
+)
+#-----------------------------
+
+st.space("medium")
+
+#2022PVチーム-----------------
+
+display_images_2col(
+    image_list=[
+        "photo/2022PV.jpg"
+    ],
+    caption="2022年PVチーム",
+    width=220
+)
+#-----------------------------
+
+st.space("medium")
+
+#修学旅行----------------------
+display_images_2col(
+    image_list=[
+        "photo/school_trip.jpg"
+    ],
+    caption="下妻第一高等学校修学旅行",
+    width=220
+)
+#-------------------------------
