@@ -124,7 +124,8 @@ display_images_2col(
     image_list=[
         "photo/nature_kids.jpg"
     ],
-    caption="ネイチャーキッズ特派員"
+    caption="ネイチャーキッズ特派員",
+    width=1000
 )
 #--------------------------------
 
