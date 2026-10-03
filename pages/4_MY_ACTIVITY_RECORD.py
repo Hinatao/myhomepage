@@ -125,7 +125,7 @@ display_images_2col(
         "photo/nature_kids.jpg"
     ],
     caption="ネイチャーキッズ特派員",
-    width=1000
+    width=300
 )
 #--------------------------------
 
@@ -161,7 +161,7 @@ display_images_2col(
         "photo/english_camp.jpg"
     ],
     caption="Englisg Camp",
-    width=220
+    width=300
 )
 #----------------------------------
 
