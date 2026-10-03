@@ -228,7 +228,7 @@ display_images_2col(
         "photo/nature_kids.jpg"
     ],
     caption="ネイチャーキッズ特派員",
-    width="100%"
+    width=220
 )
 #--------------------------------
 st.space("medium")
@@ -238,6 +238,6 @@ display_images_2col(
         "photo/asia_conf.jpg","photo/asia_conf_1.jpg"
     ],
     caption="アジアこども会議",
-    width="100%"
+    width=220
 )
 #--------------------------------
