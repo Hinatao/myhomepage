@@ -135,7 +135,7 @@ display_images_2col(
         "photo/asia_conf.jpg","photo/asia_conf_1.jpg"
     ],
     caption="アジアこども会議",
-    width=220
+    width=300
 )
 #--------------------------------
 
