@@ -160,8 +160,7 @@ display_images_2col(
     image_list=[
         "photo/english_camp.jpg"
     ],
-    caption="Englisg Camp",
-    width=300
+    caption="Englisg Camp"
 )
 #----------------------------------
 
