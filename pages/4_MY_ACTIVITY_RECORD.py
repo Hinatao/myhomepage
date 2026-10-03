@@ -120,7 +120,36 @@ def display_images_2col(image_list, caption="", width="100%"):
             if cand.exists():
                 return cand
         return None
+#サイズ変更コード------
+    # ★2. 数値（例: 220）が渡された場合は "220px" の文字列に変換
+    css_width = f"{width}px" if isinstance(width, (int, float)) else str(width)
 
+    # ★3. 渡された width をCSSの max-width に適用して画像サイズをコントロール
+    st.html(f"""
+        <style>
+        [data-testid="stHorizontalBlock"] {{
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            gap: 8px !important;
+            justify-content: center !important;
+        }}
+        [data-testid="stHorizontalBlock"] > div {{
+            min-width: 0 !important;
+            display: flex !important;
+            justify-content: center !important;
+        }}
+        /* width で指定されたサイズを上限にして中央配置 */
+        [data-testid="stHorizontalBlock"] img {{
+            max-width: {css_width} !important;
+            width: 100% !important;
+            height: auto !important;
+            object-fit: contain;
+        }}
+        </style>
+    """)
+    #--------------------
+    
     # -------------------------------------------------------------
     # パターンA：画像が1枚だけの場合（中央寄せ表示）
     # -------------------------------------------------------------
