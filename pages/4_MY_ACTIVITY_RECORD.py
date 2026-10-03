@@ -147,7 +147,7 @@ display_images_2col(
         "photo/kids_diet.jpg"
     ],
     caption="こども国会",
-    width=220
+    width=300
 )
 #---------------------------------
 
@@ -159,7 +159,7 @@ display_images_2col(
         "photo/english_camp.jpg"
     ],
     caption="Englisg Camp",
-    width=180
+    width=300
 )
 #----------------------------------
 
@@ -171,7 +171,7 @@ display_images_2col(
         "photo/dr_nadarenjar.jpg","photo/earthquake_reserch.jpg"
     ],
     caption="納口先生の防災イベントの様子",
-    width=220
+    width=300
 )
 #-----------------------------------
 
@@ -183,7 +183,7 @@ display_images_2col(
         "photo/independence_reserch_1.jpg","photo/independence_reserch.jpg","photo/independence_reserch_2.jpg"
     ],
     caption="茨城県児童生徒科学研究作品展",
-    width=220
+    width=300
 )
 #-----------------------------------
 
@@ -195,7 +195,7 @@ display_images_2col(
         "photo/micronecia_1.jpg","photo/micronecia.jpg","photo/micronecia_2.jpg"
     ],
     caption="ミクロネシア諸島自然体験交流事業",
-    width=220
+    width=300
 )
 #-------------------------------------
 
@@ -207,7 +207,7 @@ display_images_2col(
         "photo/chaina.jpg","photo/chaina_1.jpg","photo/chaina_2.jpg"
     ],
     caption="古河市国際友好交流都市交流会",
-    width=220
+    width=300
 )
 #---------------------------------
 
@@ -219,7 +219,7 @@ display_images_2col(
         "photo/2021PV.jpg"
     ],
     caption="2021年PVチーム",
-    width=220
+    width=300
 )
 #-----------------------------
 
@@ -232,7 +232,7 @@ display_images_2col(
         "photo/2022PV.jpg"
     ],
     caption="2022年PVチーム",
-    width=220
+    width=300
 )
 #-----------------------------
 
@@ -244,6 +244,6 @@ display_images_2col(
         "photo/school_trip.jpg"
     ],
     caption="下妻第一高等学校修学旅行",
-    width=220
+    width=300
 )
 #-------------------------------
