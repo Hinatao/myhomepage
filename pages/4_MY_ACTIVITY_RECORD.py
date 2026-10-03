@@ -183,13 +183,13 @@ def display_images_2col(image_list, caption="", width=None):
                     else:
                         st.error(f"画像なし: {Path(img_path).name}")
 
-if caption:
-        st.markdown(
-            f"<p style='text-align: center; color: gray; font-size: 0.85em; margin-top: 4px;'>"
-            f"{caption}"
-            f"</p>",
-            unsafe_allow_html=True
-        )
+    if caption:
+            st.markdown(
+                f"<p style='text-align: center; color: gray; font-size: 0.85em; margin-top: 4px;'>"
+                f"{caption}"
+               f"</p>",
+             unsafe_allow_html=True
+         )
 
     # ----------------------------
 
