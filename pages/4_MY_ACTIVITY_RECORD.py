@@ -132,7 +132,7 @@ st.space("medium")
 #アジア子ども会議---------------
 display_images_2col(
     image_list=[
-        "photo/アジアこども会議/asia_conf.jpg","photoアジアこども会議/asia_conf_1.jpg"
+        "photo/アジアこども会議/asia_conf.jpg","photo/アジアこども会議/asia_conf_1.jpg"
     ],
     caption="アジアこども会議",
     width=300
@@ -204,7 +204,7 @@ st.space("medium")
 #中国------------------------------
 display_images_2col(
     image_list=[
-        "photo/中国/c1.jpg","photo/中国/c2.jpg","photo//中国c3.jpg"
+        "photo/中国/c1.jpg","photo/中国/c2.jpg","photo/中国/c3.jpg"
     ],
     caption="古河市国際友好交流都市交流会",
     width=300
