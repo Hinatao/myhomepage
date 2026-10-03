@@ -1,11 +1,4 @@
-import streamlit as st
-import base64
-from pathlib import Path
-
-st.set_page_config(page_title="活動記録",page_icon="📷️")
-st.title("過去の活動記録")
-st.write("個人情報保護のため、人が写っている写真にはモザイク処理がかかっています。ご了承ください")
-
+画像貼り付けの関数
 #関数定義------------
 def display_images_2col(image_list, caption="", width="100%"):
     """
@@ -28,35 +21,12 @@ def display_images_2col(image_list, caption="", width="100%"):
             if cand.exists():
                 return cand
         return None
-
-    # --- width の指定（数値・文字列）を解析 ---
-    if isinstance(width, (int, float)):
-        img_width = int(width)
-        css_max_width = f"{width}px"
-    else:
-        if width.endswith("%"):
-            img_width = None
-            css_max_width = width
-        else:
-            img_width = None
-            css_max_width = width if width.endswith("px") else f"{width}px"
     
     # -------------------------------------------------------------
     # パターンA：画像が1枚だけの場合（中央寄せ表示）
     # -------------------------------------------------------------
     if len(image_list) == 1:
         found_path = find_image(image_list[0])
-
-        # 1枚指定の時は CSS で無理な引き伸ばしを防ぐ
-        st.html(f"""
-            <style>
-            [data-testid="stHorizontalBlock"] img {{
-                max-width: {css_max_width} !important;
-                height: auto !important;
-                margin: 0 auto !important;
-            }}
-            </style>
-        """)
         
         # [左右の余白, 中央の画像枠, 左右の余白]
         # PC・スマホどちらでも中央にほどよいサイズで収まる比率 [1, 2, 1]
@@ -124,7 +94,7 @@ def display_images_2col(image_list, caption="", width="100%"):
 
 # ----------------------------
 
-
+書き方
 #ネイチャーキッズ---------------
 display_images_2col(
     image_list=[
@@ -134,124 +104,3 @@ display_images_2col(
     width=220
 )
 #--------------------------------
-
-st.space("medium")
-
-#アジア子ども会議---------------
-display_images_2col(
-    image_list=[
-        "photo/asia_conf.jpg","photo/asia_conf_1.jpg"
-    ],
-    caption="アジアこども会議",
-    width=220
-)
-#--------------------------------
-
-st.space("medium")
-
-#子ども国会----------------------
-display_images_2col(
-    image_list=[
-        "photo/kids_diet.jpg"
-    ],
-    caption="こども国会",
-    width=220
-)
-#---------------------------------
-
-st.space("medium")
-
-#English camp----------------------
-display_images_2col(
-    image_list=[
-        "photo/english_camp.jpg"
-    ],
-    caption="Englisg Camp",
-    width=220
-)
-#----------------------------------
-
-st.space("medium")
-
-#納口先生-------------------------
-display_images_2col(
-    image_list=[
-        "photo/dr_nadarenjar.jpg","photo/earthquake_reserch.jpg"
-    ],
-    caption="納口先生の防災イベントの様子",
-    width=220
-)
-#-----------------------------------
-
-st.space("medium")
-
-#自由研究---------------------------
-display_images_2col(
-    image_list=[
-        "photo/independence_reserch_1.jpg","photo/independence_reserch.jpg","photo/independence_reserch_2.jpg"
-    ],
-    caption="茨城県児童生徒科学研究作品展",
-    width=220
-)
-#-----------------------------------
-
-st.space("medium")
-
-#ミクロネシア----------------------
-display_images_2col(
-    image_list=[
-        "photo/micronecia_1.jpg","photo/micronecia.jpg","photo/micronecia_2.jpg"
-    ],
-    caption="ミクロネシア諸島自然体験交流事業",
-    width=220
-)
-#-------------------------------------
-
-st.space("medium")
-
-#中国------------------------------
-display_images_2col(
-    image_list=[
-        "photo/chaina.jpg","photo/chaina_1.jpg","photo/chaina_2.jpg"
-    ],
-    caption="古河市国際友好交流都市交流会",
-    width=220
-)
-#---------------------------------
-
-st.space("medium")
-
-#2021PVチーム-----------------
-display_images_2col(
-    image_list=[
-        "photo/2021PV.jpg"
-    ],
-    caption="2021年PVチーム",
-    width=220
-)
-#-----------------------------
-
-st.space("medium")
-
-#2022PVチーム-----------------
-
-display_images_2col(
-    image_list=[
-        "photo/2022PV.jpg"
-    ],
-    caption="2022年PVチーム",
-    width=220
-)
-#-----------------------------
-
-st.space("medium")
-
-#修学旅行----------------------
-display_images_2col(
-    image_list=[
-        "photo/school_trip.jpg"
-    ],
-    caption="下妻第一高等学校修学旅行",
-    width=220
-)
-#-------------------------------
