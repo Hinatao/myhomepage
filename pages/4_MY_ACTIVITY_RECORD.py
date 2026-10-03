@@ -11,6 +11,7 @@ def display_images_2col(image_list, caption="", width="100%"):
     """
     ・画像が1枚の場合：全端末で画面中央に配置
     ・画像が2枚以上の場合：スマホでも横2列で並べる
+    ・width: 220, 150 などの数値、または "180px", "80%" などの文字列で確実にサイズ変更可能
     """
     
     current_file = Path(__file__).resolve()
@@ -29,41 +30,36 @@ def display_images_2col(image_list, caption="", width="100%"):
                 return cand
         return None
 
+    # 画像ファイルをBase64データに変換して読み込む関数（サイズ指定を確実にきかせるため）
+    def render_img_html(file_path, css_w):
+        try:
+            with open(file_path, "rb") as f:
+                encoded = base64.b64encode(f.read()).decode()
+            ext = file_path.suffix.lower().replace(".", "")
+            ext = "jpeg" if ext in ["jpg", "jpeg"] else ext
+            src = f"data:image/{ext};base64,{encoded}"
+            
+            # max-width と width の両方を固定することで、サイズ変更を確定させる
+            return f'<img src="{src}" style="width: 100%; max-width: {css_w}; height: auto; object-fit: contain; display: block; margin: 0 auto; border-radius: 4px;">'
+        except Exception as e:
+            return f'<p style="color: red;">読み込みエラー: {e}</p>'
+
     # --- width の指定（数値・文字列）を解析 ---
     if isinstance(width, (int, float)):
-        img_width = int(width)
         css_max_width = f"{width}px"
     else:
-        if width.endswith("%"):
-            img_width = None
-            css_max_width = width
-        else:
-            img_width = None
-            css_max_width = width if width.endswith("px") else f"{width}px"
-    
+        css_max_width = width if (width.endswith("%") or width.endswith("px")) else f"{width}px"
+
     # -------------------------------------------------------------
     # パターンA：画像が1枚だけの場合（中央寄せ表示）
     # -------------------------------------------------------------
     if len(image_list) == 1:
         found_path = find_image(image_list[0])
-
-        # 1枚指定の時は CSS で無理な引き伸ばしを防ぐ
-        st.html(f"""
-            <style>
-            [data-testid="stHorizontalBlock"] img {{
-                max-width: {css_max_width} !important;
-                height: auto !important;
-                margin: 0 auto !important;
-            }}
-            </style>
-        """)
-        
-        # [左右の余白, 中央の画像枠, 左右の余白]
-        # PC・スマホどちらでも中央にほどよいサイズで収まる比率 [1, 2, 1]
         cols = st.columns([1, 2, 1])
         with cols[1]:
             if found_path:
-                st.image(str(found_path), use_container_width=True)
+                img_html = render_img_html(found_path, css_max_width)
+                st.markdown(img_html, unsafe_allow_html=True)
             else:
                 st.error(f"画像なし: {Path(image_list[0]).name}")
 
@@ -71,7 +67,7 @@ def display_images_2col(image_list, caption="", width="100%"):
     # パターンB：画像が2枚以上の場合（スマホでも横2列を維持）
     # -------------------------------------------------------------
     else:
-        # 2列強制用のCSSを注入
+        # スマホでも横2列に並べるCSS
         st.html("""
             <style>
             [data-testid="stHorizontalBlock"] {
@@ -79,16 +75,14 @@ def display_images_2col(image_list, caption="", width="100%"):
                 flex-direction: row !important;
                 flex-wrap: nowrap !important;
                 gap: 8px !important;
+                justify-content: center !important;
+                align-items: center !important;
             }
             [data-testid="stHorizontalBlock"] > div {
-                width: 50% !important;
                 min-width: 0 !important;
-                flex: 1 1 50% !important;
-            }
-            [data-testid="stHorizontalBlock"] img {
-                width: 100% !important;
-                height: auto !important;
-                object-fit: contain;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
             }
             </style>
         """)
@@ -96,7 +90,6 @@ def display_images_2col(image_list, caption="", width="100%"):
         for i in range(0, len(image_list), 2):
             pair = image_list[i:i+2]
             
-            # もし奇数枚で最後の1枚になった場合は中央寄せにする処理
             if len(pair) == 1:
                 cols = st.columns([1, 2, 1])
                 target_col = cols[1]
@@ -110,18 +103,19 @@ def display_images_2col(image_list, caption="", width="100%"):
                 
                 with col_to_use:
                     if found_path:
-                        st.image(str(found_path), use_container_width=True)
+                        img_html = render_img_html(found_path, css_max_width)
+                        st.markdown(img_html, unsafe_allow_html=True)
                     else:
                         st.error(f"画像なし: {Path(img_path).name}")
 
+    # キャプション（共通）
     if caption:
-            st.markdown(
-                f"<p style='text-align: center; color: gray; font-size: 0.85em; margin-top: 4px;'>"
-                f"{caption}"
-               f"</p>",
-             unsafe_allow_html=True
-         )
-
+        st.markdown(
+            f"<p style='text-align: center; color: gray; font-size: 0.85em; margin-top: 6px;'>"
+            f"{caption}"
+            f"</p>",
+            unsafe_allow_html=True
+        )
 # ----------------------------
 
 
@@ -130,7 +124,8 @@ display_images_2col(
     image_list=[
         "photo/nature_kids.jpg"
     ],
-    caption="ネイチャーキッズ特派員"
+    caption="ネイチャーキッズ特派員",
+    width=300
 )
 #--------------------------------
 
