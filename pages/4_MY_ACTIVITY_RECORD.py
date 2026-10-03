@@ -168,7 +168,7 @@ display_images_2col(
     width=220
 )
 #--------------------------------
-st.space("midium")
+st.space("medium")
 #アジア子ども会議---------------
 display_images_2col(
     image_list=[
