@@ -1,4 +1,6 @@
 import streamlit as st
+import base64
+from pathlib import Path
 
 st.set_page_config(page_title="活動記録",page_icon="📷️")
 st.title("過去の活動記録")
@@ -85,3 +87,57 @@ with caption_col:
     )
 #------------------------------------------------------
 
+
+#画像貼り付けの関数定義-------------------------------
+
+def display_images_grid_2col(image_list, caption="", img_max_width="200px"):
+    """
+    st.columns を使用して HTML を一切使わずに2列配置する安全な関数
+    """
+    # 2枚ずつペアにして列を作る
+    for i in range(0, len(image_list), 2):
+        pair = image_list[i:i+2]
+        
+        # 1行を [余白, 画像1, 画像2, 余白] の4カラムに分割して中央寄せる
+        cols = st.columns([1, 2, 2, 1])
+        
+        for idx, img_path in enumerate(pair):
+            with cols[idx + 1]:
+                if Path(img_path).exists():
+                    st.image(str(img_path), use_container_width=True)
+                else:
+                    st.error(f"画像なし: {Path(img_path).name}")
+
+    # 一番最後に1つだけキャプションを表示
+    if caption:
+        st.caption(f"<div style='text-align: center;'>{caption}</div>", unsafe_allow_html=True)
+        
+#------------------------------------------------------------
+
+#ネイチャーキッズ----------------------------------------
+
+BASE_DIR = Path("/home/hinata/myhomepage")
+
+images = [
+    BASE_DIR / "photo" / "nature_kids.jpg"
+]
+
+display_images_grid_2col(
+    image_list=images,
+    caption="ネイチャーキッズ特派員"
+)
+#--------------------------------------------------
+
+#アジア子ども会議---------------------------
+
+BASE_DIR = Path("/home/hinata/myhomepage")
+
+images = [
+    BASE_DIR / "photo" / "asia_conf.jpg",
+    BASE_DIR / "photo" / "asia_conf_1.jpg"
+]
+
+display_images_grid_2col(
+    image_list=images,
+    caption="ネイチャーキッズ特派員"
+)
