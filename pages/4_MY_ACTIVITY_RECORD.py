@@ -177,7 +177,7 @@ st.space("medium")
 #ミクロネシア----------------------
 display_images_2col(
     image_list=[
-        "photo/micronecis_1.jpg","photo/micronecia.jpg","photo/micronecia_2"
+        "photo/micronecia_1.jpg","photo/micronecia.jpg","photo/micronecia_2.jpg"
     ],
     caption="ミクロネシア諸島自然体験交流事業",
     width=220
