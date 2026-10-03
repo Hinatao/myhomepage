@@ -88,26 +88,46 @@ with caption_col:
 #------------------------------------------------------
 
 #関数定義----------------------------------------------
-def display_images_2col(image_list, caption="", width=220):
+def display_images_2col(image_list, caption="", width=None):
     """
-    ネット上・スマホ環境でも確実に画像を見つけ出し、横2枚ずつ配置する関数
+    スマホ画面でも縦にならず、絶対に横2枚で並べる関数
     """
-    # 実行中ファイルの位置からプロジェクトのルート（親フォルダ）まで探索
+    # --- CSSで st.columns のスマホ折り返し（縦並び）を無効化 ---
+    st.html("""
+        <style>
+        /* columns の親要素を Flexbox 横並びで固定 */
+        [data-testid="stHorizontalBlock"] {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            gap: 8px !important;
+        }
+        /* 各カラムが均等に幅50%を取るように強制 */
+        [data-testid="stHorizontalBlock"] > div {
+            width: 50% !important;
+            min-width: 0 !important;
+            flex: 1 1 50% !important;
+        }
+        /* 画像がカラム枠からはみ出ないように可変調整 */
+        [data-testid="stHorizontalBlock"] img {
+            width: 100% !important;
+            height: auto !important;
+            object-fit: contain;
+        }
+        </style>
+    """)
+
     current_file = Path(__file__).resolve()
     
-    # 画像ファイルを探す関数（相対パス・絶対パス・pages階層ズレを吸収）
     def find_image(img_path_str):
         p = Path(img_path_str)
         if p.is_absolute() and p.exists():
             return p
-        
-        # 探す候補パスのリスト
         candidates = [
-            current_file.parent / p,               # 同一フォルダ
-            current_file.parent.parent / p,        # 1つ上の親フォルダ (pagesから見たルート)
-            current_file.parent.parent.parent / p  # さらに上の階層
+            current_file.parent / p,
+            current_file.parent.parent / p,
+            current_file.parent.parent.parent / p
         ]
-        
         for cand in candidates:
             if cand.exists():
                 return cand
@@ -117,22 +137,22 @@ def display_images_2col(image_list, caption="", width=220):
     for i in range(0, len(image_list), 2):
         pair = image_list[i:i+2]
         
-        # 画面幅に合わせて綺麗に2列配置
-        cols = st.columns(2, gap="small")
+        cols = st.columns(2)
         
         for idx, img_path in enumerate(pair):
             found_path = find_image(img_path)
             
             with cols[idx]:
                 if found_path:
-                    st.image(str(found_path), width=width)
+                    # width=None (use_container_width=True) にすることでカラム幅いっぱいに収めます
+                    st.image(str(found_path), use_container_width=True)
                 else:
                     st.error(f"画像なし: {Path(img_path).name}")
 
-    # 一番最後に1つだけキャプションを表示
+    # すべての画像が表示し終わった後にキャプションを1つだけ出力
     if caption:
         st.markdown(
-            f"<p style='text-align: center; color: gray; font-size: 0.85em; margin-top: -5px;'>"
+            f"<p style='text-align: center; color: gray; font-size: 0.85em; margin-top: 4px;'>"
             f"{caption}"
             f"</p>",
             unsafe_allow_html=True
