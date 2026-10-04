@@ -265,7 +265,7 @@ st.space("medium")
 #R6姉妹都市交流会---------------
 display_images_2col(
     image_list=[
-        "photo/ダンデライオン/R6姉妹都市交流/d1.jpg""photo/ダンデライオン/R6姉妹都市交流/d2.jpg","photo/ダンデライオン/R6姉妹都市交流/d3.jpg"
+        "photo/ダンデライオン/R6姉妹都市交流/d1.jpg","photo/ダンデライオン/R6姉妹都市交流/d2.jpg","photo/ダンデライオン/R6姉妹都市交流/d3.jpg"
     ],
     caption="R6年度姉妹都市交流会",
     width=300
@@ -277,7 +277,7 @@ st.space("medium")
 #夢あんどん-------------------
 display_images_2col(
     image_list=[
-        "photo/ダンデライオン/夢あんどん/d1.jpg""photo/ダンデライオン/夢あんどん/d2.jpg","photo/ダンデライオン/夢あんどん/d3.jpg","photo/ダンデライオン/夢あんどん/d4.jpg"
+        "photo/ダンデライオン/夢あんどん/d1.jpg","photo/ダンデライオン/夢あんどん/d2.jpg","photo/ダンデライオン/夢あんどん/d3.jpg","photo/ダンデライオン/夢あんどん/d4.jpg"
     ],
     caption="夢あんどんと夕涼み(ダンデライオン)",
     width=300
@@ -301,7 +301,7 @@ st.space("medium")
 #R7姉妹都市交流会-----------------
 display_images_2col(
     image_list=[
-        "photo/ダンデライオン/R7姉妹都市交流/d1.jpg""photo/ダンデライオン/R7姉妹都市交流/d2.jpg","photo/ダンデライオン/R7姉妹都市交流/d3.jpg","photo/ダンデライオン/R7姉妹都市交流/d4.jpg","photo/ダンデライオン/R7姉妹都市交流/d5.jpg"
+        "photo/ダンデライオン/R7姉妹都市交流/d1.jpg","photo/ダンデライオン/R7姉妹都市交流/d2.jpg","photo/ダンデライオン/R7姉妹都市交流/d3.jpg","photo/ダンデライオン/R7姉妹都市交流/d4.jpg","photo/ダンデライオン/R7姉妹都市交流/d5.jpg"
     ],
     caption="R7年度姉妹都市交流会",
     width=300
@@ -313,7 +313,7 @@ st.space("medium")
 #R8姉妹都市交流会-----------------
 display_images_2col(
     image_list=[
-        "photo/ダンデライオン/R8姉妹都市交流/d1.jpg""photo/ダンデライオン/R8姉妹都市交流/d2.jpg","photo/ダンデライオン/R8姉妹都市交流/d3.jpg","photo/ダンデライオン/R8姉妹都市交流/d4.jpg"
+        "photo/ダンデライオン/R8姉妹都市交流/d1.jpg","photo/ダンデライオン/R8姉妹都市交流/d2.jpg","photo/ダンデライオン/R8姉妹都市交流/d3.jpg","photo/ダンデライオン/R8姉妹都市交流/d4.jpg"
     ],
     caption="R8年度姉妹都市交流会",
     width=300
@@ -325,7 +325,7 @@ st.space("medium")
 #親睦キャンプ---------------------
 display_images_2col(
     image_list=[
-        "photo/ダンデライオン/親睦キャンプ/d1.jpg""photo/ダンデライオン/親睦キャンプ/d2.jpg","photo/ダンデライオン/親睦キャンプ/d3.jpg","photo/ダンデライオン/親睦キャンプ/d4.jpg"
+        "photo/ダンデライオン/親睦キャンプ/d1.jpg","photo/ダンデライオン/親睦キャンプ/d2.jpg","photo/ダンデライオン/親睦キャンプ/d3.jpg","photo/ダンデライオン/親睦キャンプ/d4.jpg"
     ],
     caption="親睦キャンプ",
     width=300
