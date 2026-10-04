@@ -8,7 +8,7 @@ st.write("なせばなる秋祭り 謎解き担当")
 
 
 st.title("所属")
-st.capyion("Linkを踏むとInstgramへ飛びます")
+st.caption("Linkを踏むとInstgramへ飛びます")
 st.markdown(
     '<a href="https://www.instagram.com/koga_dandelion/" target="_blank" rel="noopener noreferrer">ダンデライオン</a>',
     unsafe_allow_html=True
