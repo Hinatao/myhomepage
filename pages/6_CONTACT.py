@@ -3,6 +3,7 @@ import streamlit as st
 
 st.set_page_config(page_title="お仕事のご連絡・相談等",page_icon="💬")
 
+st.title("お仕事のご連絡・相談等")
 
 st.write("お仕事のご連絡・ご相談はDMもしくは下記メールより")
 st.write("過去のイベント資料に関する問い合わせ等もこちらへお願いします。")
@@ -18,7 +19,10 @@ st.markdown(
 )
 st.space("large")
 
+st.title("LINK")
+
 st.write("奥山陽向のInstagram")
-<a href="https://www.instagram.com/hinata.o__0504/" target="_blank" rel="noopener noreferrer">
-    Instagramを見る
-</a>
+st.markdown(
+    '<a href="https://www.instagram.com/hinata.o__0504/" target="_blank" rel="noopener noreferrer">Instagramを見る</a>',
+    unsafe_allow_html=True
+)

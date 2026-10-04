@@ -8,8 +8,15 @@ st.write("なせばなる秋祭り 謎解き担当")
 
 
 st.title("所属")
-st.write("ダンデライオンOB")
-st.write("Accel Link米沢")
+st.capyion("Linkを踏むとInstgramへ飛びます")
+st.markdown(
+    '<a href="https://www.instagram.com/koga_dandelion/" target="_blank" rel="noopener noreferrer">ダンデライオン</a>',
+    unsafe_allow_html=True
+)
+st.markdown(
+    '<a href="https://www.instagram.com/accellinkyonezawa/" target="_blank" rel="noopener noreferrer">Accel Link米沢</a>',
+    unsafe_allow_html=True
+)
 st.write("科学実験ラボFutur Production")
 
 st.title("来歴")
