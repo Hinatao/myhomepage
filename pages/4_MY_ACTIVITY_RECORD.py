@@ -241,7 +241,7 @@ st.space("medium")
 #修学旅行----------------------
 display_images_2col(
     image_list=[
-        "photo/修学旅行/t1.jpg","photo/修学旅行/t2.jpg","photo/修学旅行/t3.jpg","photo/修学旅行/t4.jpg","photo/修学旅行/t5.jpg"
+        "photo/修学旅行/t1.jpg","photo/修学旅行/t2.jpg","photo/修学旅行/t3.jpg","photo/修学旅行/t4.jpg"
     ],
     caption="下妻第一高等学校修学旅行",
     width=300
@@ -262,6 +262,30 @@ display_images_2col(
 
 st.space("medium")
 
+#R6姉妹都市交流会---------------
+display_images_2col(
+    image_list=[
+        "photo/ダンデライオン/R6姉妹都市交流/d1.jpg""photo/ダンデライオン/R6姉妹都市交流/d2.jpg","photo/ダンデライオン/R6姉妹都市交流/d3.jpg"
+    ],
+    caption="R6年度姉妹都市交流会",
+    width=300
+)
+#------------------------------
+
+st.space("medium")
+
+#夢あんどん-------------------
+display_images_2col(
+    image_list=[
+        "photo/ダンデライオン/夢あんどん/d1.jpg""photo/ダンデライオン/夢あんどん/d2.jpg","photo/ダンデライオン/夢あんどん/d3.jpg","photo/ダンデライオン/夢あんどん/d4.jpg"
+    ],
+    caption="夢あんどんと夕涼み(ダンデライオン)",
+    width=300
+)
+#-----------------------------------
+
+st.space("medium")
+
 #成人式------------------------
 display_images_2col(
     image_list=[
@@ -274,15 +298,39 @@ display_images_2col(
 
 st.space("medium")
 
-#ダンデライオン-----------------
+#R7姉妹都市交流会-----------------
 display_images_2col(
     image_list=[
-        "photo/ダンデライオン/R8姉妹都市交流/d1.jpg"
+        "photo/ダンデライオン/R7姉妹都市交流/d1.jpg""photo/ダンデライオン/R7姉妹都市交流/d2.jpg","photo/ダンデライオン/R7姉妹都市交流/d3.jpg","photo/ダンデライオン/R7姉妹都市交流/d4.jpg","photo/ダンデライオン/R7姉妹都市交流/d5.jpg"
     ],
-    caption="令和8年古河市二十歳のつどい",
+    caption="R7年度姉妹都市交流会",
+    width=300
+)
+#-----------------------------------
+
+st.space("medium")
+
+#R8姉妹都市交流会-----------------
+display_images_2col(
+    image_list=[
+        "photo/ダンデライオン/R8姉妹都市交流/d1.jpg""photo/ダンデライオン/R8姉妹都市交流/d2.jpg","photo/ダンデライオン/R8姉妹都市交流/d3.jpg","photo/ダンデライオン/R8姉妹都市交流/d4.jpg"
+    ],
+    caption="R8年度姉妹都市交流会",
     width=300
 )
 #---------------------------------
+
+st.space("medium")
+
+#親睦キャンプ---------------------
+display_images_2col(
+    image_list=[
+        "photo/ダンデライオン/親睦キャンプ/d1.jpg""photo/ダンデライオン/親睦キャンプ/d2.jpg","photo/ダンデライオン/親睦キャンプ/d3.jpg","photo/ダンデライオン/親睦キャンプ/d4.jpg"
+    ],
+    caption="親睦キャンプ",
+    width=300
+)
+#----------------------------------
 
 st.space("medium")
 
