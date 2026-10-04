@@ -16,3 +16,9 @@ st.markdown(
     f'<a href="mailto:{email}?subject={subject}&body={body}">aoshanyangxiang96@gmail.com</a>',
     unsafe_allow_html=True,
 )
+st.space("large")
+
+st.write("奥山陽向のInstagram")
+<a href="https://www.instagram.com/hinata.o＿0504/" target="_blank" rel="noopener noreferrer">
+    Instagramを見る
+</a>
