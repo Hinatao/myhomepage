@@ -19,6 +19,6 @@ st.markdown(
 st.space("large")
 
 st.write("奥山陽向のInstagram")
-<a href="https://www.instagram.com/hinata.o_0504/" target="_blank" rel="noopener noreferrer">
+<a href="https://www.instagram.com/hinata.o__0504/" target="_blank" rel="noopener noreferrer">
     Instagramを見る
 </a>
