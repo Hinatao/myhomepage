@@ -241,7 +241,7 @@ st.space("medium")
 #修学旅行----------------------
 display_images_2col(
     image_list=[
-        "photo/修学旅行/t1.jpg","photo/修学旅行/t2.jpg","photo/修学旅行/t3.jpg","photo/修学旅行/t4.jpg"
+        "photo/修学旅行/t1.jpg","photo/修学旅行/t2.jpg","photo/修学旅行/t3.jpg"
     ],
     caption="下妻第一高等学校修学旅行",
     width=300
