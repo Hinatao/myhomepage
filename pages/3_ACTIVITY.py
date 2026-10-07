@@ -17,7 +17,7 @@ st.markdown(
     '<a href="https://www.instagram.com/accellinkyonezawa/" target="_blank" rel="noopener noreferrer">Accel Link米沢</a>',
     unsafe_allow_html=True
 )
-st.write("科学実験ラボFutur Production")
+st.write("科学実験ラボFuture Production")
 
 st.title("来歴")
 st.write("2016 第14回ネイチャーキッズ特派員")
@@ -41,6 +41,7 @@ st.write("2022 下妻第一高等学校修学旅行実行委員長")
 st.write("2022 下妻第一高等学校生徒会副生徒会長")
 st.write("2023 下妻第一高等学校第54回文化祭実行委員長")
 st.write("2024 ProjectSS企画部代表/企画運営管理責任者")
+st.write("2025 科学実験ラボFuture Production設立・同センター長")
 st.write("2026 令和8年古河市二十歳のつどい実行委員長")
 st.write("2026 総和中学校第62期生同窓会主催")
 st.write("2026 親睦キャンプ企画監査・事前リスク管理/予算担当")
