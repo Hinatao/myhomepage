@@ -19,4 +19,5 @@ st.write("乙種第1類危険物取扱者")
 st.write("乙種第3類危険物取扱者")
 st.write("乙種第5類危険物取扱者")
 st.write("高等学校教諭第一種免許状")
+st.write("FP")
 
