@@ -8,7 +8,7 @@ st.set_page_config(page_title="マイホームページ", layout="centered")
 with st.spinner("ホームページを起動しています。少々お待ちください..."):
     # ※ここに重い処理（データベースへの接続やデータの読み込みなど）を書きます
     # 例として3秒待機するコードを入れています
-    time.sleep(3)
+    time.sleep(1)
 
 
 #Title
