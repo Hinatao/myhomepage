@@ -4,7 +4,6 @@ import streamlit as st
 st.set_page_config(page_title="実績等",page_icon="🎓")
 st.title("担当")
 st.write("サイエンス・ラボ監修,物理化学担当")
-st.write("なせばなる秋祭り 謎解き担当")
 
 
 st.title("所属")
@@ -46,4 +45,5 @@ st.write("2026 令和8年古河市二十歳のつどい実行委員長")
 st.write("2026 総和中学校第62期生同窓会主催")
 st.write("2026 親睦キャンプ企画監査・事前リスク管理/予算担当")
 st.write("2026 Accel Link幹部")
+st.write("2026 なせばなる秋祭り謎解き担当")
 st.write("2026 社会福祉事業功労者受賞")
