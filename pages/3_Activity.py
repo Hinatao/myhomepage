@@ -4,6 +4,7 @@ import streamlit as st
 st.set_page_config(page_title="実績等",page_icon="🎓")
 st.title("担当")
 st.write("サイエンス・ラボ監修,物理化学担当")
+st.write("みらいのデザインWeb制作担当")
 
 st.title("所属")
 st.caption("Linkを踏むとInstgramへ飛びます")
